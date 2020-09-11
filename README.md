@@ -37,37 +37,57 @@ Things you may want to cover:
 | furigana_first_name  | string | null: false |
 | birthday             | date   | null: false |
 
+### Association
 
+- has_many :items
+- has_one :orders, through: addresses
 
 ## items テーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| item_name          | string  | null: false |
-| detail             | string  | null: false |
-| price              | integer | null: false |
-| condition          | string  | null: false |
-| category           | string  | null: false |
-| delivery_charge    | string  | null: false |
-| delivery_time      | string  | null: false |
-| sending_address    | string  | null: false |
+| Column             | Type       | Options     |
+| ------------------ | ---------- | ----------- |
+| item_name          | string     | null: false |
+| detail             | text       | null: false |
+| price              | integer    | null: false |
+| condition          | integer    | null: false |
+| category           | integer    | null: false |
+| delivery_charge    | integer    | null: false |
+| delivery_time      | integer    | null: false |
+| sending_address    | integer    | null: false |
+| user_id            | references | null: false |
 
 
-## address テーブル
+### Association
+
+- belongs_to :users
+- has_one :orders, through: addresses
+
+## addresses テーブル
 
 | Column           | Type       | Options     |
 | ---------------- | ---------- | ----------- |
-| zip_code         | integer    | null: false |
-| prefectures      | string     | null: false |
+| zip_code         | string     | null: false |
+| prefectures      | integer    | null: false |
 | municipality     | string     | null: false |
 | street_address   | string     | null: false |
-| building         | string     | null: false |
-| telephone_number | integer    | null: false |
+| building         | string     |             |
+| telephone_number | string     | null: false |
+| order_id        | references | null: false |
 
 
-## order テーブル
+### Association
+
+- belongs_to :orders
+
+## orders テーブル
 
 | Column  | Type       | Options     |
 | ------- | ---------- | ----------- |
 | user_id | references | null: false |
 | item_id | references | null: false |
+
+### Association
+
+- belongs_to :users
+- belongs_to :items
+- has_one :addresses
