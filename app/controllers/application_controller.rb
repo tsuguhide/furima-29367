@@ -10,27 +10,26 @@ class ApplicationController < ActionController::Base
 
     if @user.valid?
       @user.save  # バリデーションをクリアした時
-      return redirect_to root_path
+      redirect_to root_path
     else
-      render "new"  # バリデーションに弾かれた時
+      render 'new' # バリデーションに弾かれた時
     end
   end
 
   private
 
- # def user_params
- #   params.require(:user).permit(:nick_name, :family_name, :first_name)
- # end
+  # def user_params
+  #   params.require(:user).permit(:nick_name, :family_name, :first_name)
+  # end
 
   def basic_auth
     authenticate_or_request_with_http_basic do |username, password|
-      username == ENV["BASIC_FURIMA_USER"] && password == ENV["BASIC_FURIMA_PASSWORD"]      
+      username == ENV['BASIC_FURIMA_USER'] && password == ENV['BASIC_FURIMA_PASSWORD']
     end
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: 
+    devise_parameter_sanitizer.permit(:sign_up, keys:
       [:nick_name, :family_name, :first_name, :furigana_family_name, :furigana_first_name, :birthday])
   end
-
 end
