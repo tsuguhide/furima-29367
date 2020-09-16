@@ -5,17 +5,6 @@ class ApplicationController < ActionController::Base
   def index
   end
 
-  def create
-    @user = User.new(configure_permitted_parameter)
-
-    if @user.valid?
-      @user.save  # バリデーションをクリアした時
-      redirect_to root_path
-    else
-      render 'new' # バリデーションに弾かれた時
-    end
-  end
-
   private
 
   # def user_params
