@@ -13,7 +13,7 @@ class SendingAddress  < ActiveHash::Base
     { id: 11, name: '群馬県' },
     { id: 12, name: '千葉県' },
     { id: 13, name: '埼玉県' },
-    { id: 14, name: '東京都' }
+    { id: 14, name: '東京都' },
     { id: 15, name: '神奈川県' },
     { id: 16, name: '新潟県' },
     { id: 17, name: '長野県' },

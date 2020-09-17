@@ -1,6 +1,14 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :category, :condition, :delivery_charge, :delivery_time, :sending_address
+  #activehashモデルとのアソシエーション
+  belongs_to_active_hash :category
+  belongs_to_active_hash :condition
+  belongs_to_active_hash :delivery_charge
+  belongs_to_active_hash :delivery_time
+  belongs_to_active_hash :sending_address
+
+  # usersテーブルとのアソシエーション
+  belongs_to :user
 
   #空の投稿を保存できないようにする
   validates :category, :condition, :delivery_charge, :delivery_time, :sending_address, presence: true
