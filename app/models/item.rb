@@ -10,6 +10,10 @@ class Item < ApplicationRecord
   # usersテーブルとのアソシエーション
   belongs_to :user
 
+  # activestorageとのアソシエーション
+  has_one_attached :image
+
+
   #空の投稿を保存できないようにする
   validates :category, :condition, :delivery_charge, :delivery_time, :sending_address, presence: true
 
