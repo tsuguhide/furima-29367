@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def index
-    @item = Item.all
+    @item = Item.all.order("created_at DESC")
   end
 
   private
