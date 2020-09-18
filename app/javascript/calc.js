@@ -1,4 +1,4 @@
-window.addEventListener('load', function(){
+document.addEventListener('input', function(){
 
   // 要素を取得
   const inputElement = document.getElementById( "item-price" ) ;

@@ -8,9 +8,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # def user_params
-  #   params.require(:user).permit(:nick_name, :family_name, :first_name)
-  # end
 
   def basic_auth
     authenticate_or_request_with_http_basic do |username, password|
