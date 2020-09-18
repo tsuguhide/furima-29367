@@ -4,13 +4,14 @@ RSpec.describe Item, type: :model do
     @item = FactoryBot.build(:item)
   end
 
-  # describe '商品出品' do
-  # context '商品出品がうまくいくとき' do
-  #  it "nick_nameとemail、passwordとpassword_confirmation、family_nameとfirst_name、
-  # furigana_family_nameとfurigana_first_nameとbirthdayが存在すれば登録できる" do
-  #  expect(@user).to be_valid
-  # end
-  # end
+  describe '商品出品' do
+    context '商品出品がうまくいくとき' do
+      it "item_name、detail、price、condition_id、category_id、delivery_charge_id、
+      delivery_time_id、sending_address_id、imageが存在すれば登録できる" do
+        expect(@item).to be_valid
+      end
+    end
+  end
 
   context '商品出品がうまくいかないとき' do
     it 'item_nameが空だと登録できない' do
@@ -58,7 +59,6 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Image can't be blank")
     end
-
     it 'priceが全角だと登録できない' do
       @item.price = '００００００'
       @item.valid?
@@ -74,5 +74,32 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
     end
+    it 'category_idが1、「--」だと登録できない' do
+      @item.category_id = '1'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Category must be other than 1")
+    end
+    it 'condition_idが1、「--」だと登録できない' do
+      @item.condition_id = '1'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Condition must be other than 1")
+    end
+    it 'delivery_charge_idが1、「--」だと登録できない' do
+      @item.delivery_charge_id = '1'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Delivery charge must be other than 1")
+    end
+    it 'delivery_time_idが1、「--」だと登録できない' do
+      @item.delivery_time_id = '1'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Delivery time must be other than 1")
+    end
+    it 'sending_address_idが1、「--」だと登録できない' do
+      @item.sending_address_id = '1'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Sending address must be other than 1")
+    end
+
+
   end
 end
