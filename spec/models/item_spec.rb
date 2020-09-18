@@ -77,29 +77,27 @@ RSpec.describe Item, type: :model do
     it 'category_idが1、「--」だと登録できない' do
       @item.category_id = '1'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category must be other than 1")
+      expect(@item.errors.full_messages).to include('Category must be other than 1')
     end
     it 'condition_idが1、「--」だと登録できない' do
       @item.condition_id = '1'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Condition must be other than 1")
+      expect(@item.errors.full_messages).to include('Condition must be other than 1')
     end
     it 'delivery_charge_idが1、「--」だと登録できない' do
       @item.delivery_charge_id = '1'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Delivery charge must be other than 1")
+      expect(@item.errors.full_messages).to include('Delivery charge must be other than 1')
     end
     it 'delivery_time_idが1、「--」だと登録できない' do
       @item.delivery_time_id = '1'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Delivery time must be other than 1")
+      expect(@item.errors.full_messages).to include('Delivery time must be other than 1')
     end
     it 'sending_address_idが1、「--」だと登録できない' do
       @item.sending_address_id = '1'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Sending address must be other than 1")
+      expect(@item.errors.full_messages).to include('Sending address must be other than 1')
     end
-
-
   end
 end
