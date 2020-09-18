@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!
 
   def new
+    #空の変数itemを定義
     @item = Item.new
   end
 
