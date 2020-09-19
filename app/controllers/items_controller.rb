@@ -19,8 +19,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
   end
-  # @tweet.user.nickname
-  # @item.category_id => 3
+
 
   private
 
