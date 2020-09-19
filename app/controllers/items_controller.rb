@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new,:create]
 
   def new
     #空の変数itemを定義
@@ -14,6 +14,13 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+
+  def show
+    @item = Item.find(params[:id])
+
+  end
+  # @tweet.user.nickname
+  # @item.category_id => 3
 
   private
 
