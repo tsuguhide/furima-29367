@@ -1,10 +1,9 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new,:create]
-  before_action :item , only: [:show, :edit, :update]
-
+  before_action :authenticate_user!, only: [:new, :create]
+  before_action :item, only: [:show, :edit, :update, :destroy]
 
   def new
-    #空の変数itemを定義
+    # 空の変数itemを定義
     @item = Item.new
   end
 
@@ -23,6 +22,11 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
   private
