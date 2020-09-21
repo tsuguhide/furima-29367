@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new,:create]
+  before_action :item , only: [:show, :edit, :update]
+
 
   def new
     #空の変数itemを定義
@@ -15,16 +17,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @item = Item.find(params[:id])
-  end
-
-  def edit
-    @item = Item.find(params[:id])
-  end
-
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to root_path
     else
@@ -36,5 +29,9 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:item_name, :detail, :price, :condition_id, :category_id, :delivery_charge_id, :delivery_time_id, :sending_address_id, :image).merge(user_id: current_user.id)
+  end
+
+  def item
+    @item = Item.find(params[:id])
   end
 end
