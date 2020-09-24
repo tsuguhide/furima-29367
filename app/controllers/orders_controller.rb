@@ -1,10 +1,9 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-
-  #  sold out の時も
   
   def index
     @item = Item.find(params[:item_id])
+    @order = OrderAddress.new
     if current_user.id == @item.user_id
       redirect_to root_path
     elsif @item.order != nil

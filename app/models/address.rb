@@ -4,4 +4,7 @@ class Address < ApplicationRecord
   belongs_to_active_hash :sending_address
 
   belongs_to :order
+
+
+
 end
