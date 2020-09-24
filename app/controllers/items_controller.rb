@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :item, only: [:show, :edit, :update, :destroy]
 
-
   def new
     # 空の変数itemを定義
     @item = Item.new
@@ -42,5 +41,4 @@ class ItemsController < ApplicationController
   def item
     @item = Item.find(params[:id])
   end
-
 end
