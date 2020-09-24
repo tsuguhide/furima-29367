@@ -1,10 +1,15 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  #  before_action :if current_user == user_id redirect_to root_path
+
   #  sold out の時も
   
   def index
     @item = Item.find(params[:item_id])
+    if current_user.id == @item.user_id
+      redirect_to root_path
+    elsif @item.order != nil
+      redirect_to root_path
+    end
   end
 
   def create
@@ -34,8 +39,6 @@ class OrdersController < ApplicationController
       currency:'jpy'                 # 通貨の種類(日本円)
     )
   end
- 
-
 
 
 
