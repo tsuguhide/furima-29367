@@ -74,3 +74,5 @@ gem 'active_hash'
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 
+#クレジット決済
+gem 'payjp'
