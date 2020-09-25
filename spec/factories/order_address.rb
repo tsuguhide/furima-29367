@@ -5,13 +5,7 @@ FactoryBot.define do
     municipality           { '横浜市緑区' }
     street_address         { '青山１−１−１' }
     building               { '柳ビル２０１' }
-    telephone_number       { 123_456_789 }
+    telephone_number       { "1234567891" }
     token                  { 'tok_9a4c434397b0a9d4c1e1e8f034d1' }
   end
 end
-
-# association :user
-# association :item
-# association :order
-# user_id     { 10 }
-# item_id     { 15 }

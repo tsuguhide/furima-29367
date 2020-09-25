@@ -4,9 +4,14 @@ RSpec.describe Order, type: :model do
     @order = FactoryBot.build(:order_address)
   end
 
+
   describe '商品購入' do
     context '商品購入がうまくいくとき' do
-      it 'zip_code、sending_address_id、municipality、street_address、telephone_number、tokenが存在すれば登録できる' do
+      it "zip_code、sending_address_id、municipality、street_address、telephone_number、tokenが存在すれば登録できる" do
+        expect(@order).to be_valid
+      end
+      it 'buildingが空でも登録できる' do
+        @order.building = ''
         expect(@order).to be_valid
       end
     end
@@ -16,7 +21,7 @@ RSpec.describe Order, type: :model do
     it 'zip_codeが空だと登録できない' do
       @order.zip_code = ''
       @order.valid?
-      expect(@order.errors.full_messages).to include("Zip code can't be blank", 'Zip code is invalid')
+      expect(@order.errors.full_messages).to include("Zip code can't be blank", "Zip code is invalid")
     end
     it 'sending_address_idが空だと登録できない' do
       @order.sending_address_id = ''
@@ -46,14 +51,23 @@ RSpec.describe Order, type: :model do
     it 'zip_codeにハイフンがないと登録できない' do
       @order.zip_code = '3333333'
       @order.valid?
-      expect(@order.errors.full_messages).to include('Zip code is invalid')
+      expect(@order.errors.full_messages).to include("Zip code is invalid")
     end
     it 'sending_address_idが1、「--」だと登録できない' do
       @order.sending_address_id = '1'
       @order.valid?
       expect(@order.errors.full_messages).to include('Sending address must be other than 1')
     end
+    it 'telephone_numberにハイフンがあると登録できない' do
+      @order.telephone_number = '123-456789'
+      @order.valid?
+      expect(@order.errors.full_messages).to include("Telephone number is invalid")
+    end
   end
 end
 
-# bundle exec rspec spec/models/order_address_spec.rb
+
+
+ # bundle exec rspec spec/models/order_address_spec.rb
+
+

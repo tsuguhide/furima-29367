@@ -9,7 +9,7 @@ class OrderAddress
     validates :sending_address_id
     validates :municipality
     validates :street_address
-    validates :telephone_number, format: { with: /\d{7,11}/i }
+    validates :telephone_number, format: { with: /\d{10,11}/i }
     validates :token
   end
 
