@@ -66,15 +66,15 @@ Things you may want to cover:
 
 ## addresses テーブル
 
-| Column           | Type       | Options                         |
-| ---------------- | ---------- | ------------------------------- |
-| zip_code         | string     | null: false                     |
-| prefectures_id   | integer    | null: false                     |
-| municipality     | string     | null: false                     |
-| street_address   | string     | null: false                     |
-| building         | string     |                                 |
-| telephone_number | string     | null: false                     |
-| order            | references | null: false , foreign_key: true |
+| Column             | Type       | Options                         |
+| ------------------ | ---------- | ------------------------------- |
+| zip_code           | string     | null: false                     |
+| sending_address_id | integer    | null: false                     |
+| municipality       | string     | null: false                     |
+| street_address     | string     | null: false                     |
+| building           | string     |                                 |
+| telephone_number   | string     | null: false                     |
+| order              | references | null: false , foreign_key: true |
 
 
 ### Association

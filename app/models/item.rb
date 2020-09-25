@@ -7,8 +7,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_time
   belongs_to_active_hash :sending_address
 
-  # usersテーブルとのアソシエーション
+  # テーブルとのアソシエーション
   belongs_to :user
+  has_one :order
 
   # activestorageとのアソシエーション
   has_one_attached :image
