@@ -66,8 +66,3 @@ RSpec.describe Order, type: :model do
   end
 end
 
-
-
- # bundle exec rspec spec/models/order_address_spec.rb
-
-
